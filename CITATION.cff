@@ -1,0 +1,8 @@
+﻿cff-version: 1.2.0
+title: PathoAlign External Canine SCC Validation
+message: If you use this reproducibility package, please cite the repository and the public Multi-Scanner Canine SCC dataset.
+authors:
+  - family-names: Chorne
+    given-names: Larry
+repository-code: https://github.com/matthewvaishnav/pathoalign-external-caninescc
+license: MIT

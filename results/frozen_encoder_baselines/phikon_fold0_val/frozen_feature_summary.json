@@ -1,0 +1,81 @@
+{
+  "effective_rank": 59.09379227192181,
+  "eval_split": "val",
+  "extraction_metadata": {
+    "amp": true,
+    "batch_size": 32,
+    "data_root": "C:\\Users\\matth\\computational-pathology-research\\data\\external_multiscanner_caninescc\\patches",
+    "device": "cuda",
+    "feature_dim": 768,
+    "manifest": "C:\\Users\\matth\\computational-pathology-research\\data\\external_multiscanner_caninescc\\patch_manifests\\splits\\fold_0_patch_manifest.csv",
+    "model": "phikon",
+    "model_revision": "057cc0295895c2df3dd7681a89680da6015cbefe",
+    "model_source": "owkin/phikon",
+    "n_images": 4025,
+    "torch_version": "2.5.1+cu121"
+  },
+  "feature_archive": "C:\\Users\\matth\\computational-pathology-research\\results\\external_multiscanner_caninescc\\features\\fold_0_phikon.npz",
+  "feature_variance_mean": 1.3094220161437988,
+  "feature_variance_nonzero_fraction": 1.0,
+  "n_eval_regions": 189,
+  "n_eval_rows": 945,
+  "n_eval_samples": 9,
+  "pair_cosine_average": 0.8102689623832703,
+  "pair_cosine_worst": 0.7786122560501099,
+  "probe_train_split": "train",
+  "reference_scanner": "cs2",
+  "retrieval_mrr_average": 0.8505474045881511,
+  "retrieval_top1_average": 0.7761904761904763,
+  "retrieval_top1_worst": 0.6402116402116402,
+  "scanner_probe": {
+    "accuracy": 0.9798941798941799,
+    "balanced_accuracy": 0.9798941798941797,
+    "chance_accuracy": 0.2,
+    "confusion_matrix": [
+      [
+        183,
+        1,
+        4,
+        1,
+        0
+      ],
+      [
+        1,
+        188,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        185,
+        0,
+        4
+      ],
+      [
+        0,
+        0,
+        0,
+        189,
+        0
+      ],
+      [
+        0,
+        8,
+        0,
+        0,
+        181
+      ]
+    ],
+    "labels": [
+      "cs2",
+      "gt450",
+      "nz20",
+      "nz210",
+      "p1000"
+    ],
+    "n_eval_samples": 9,
+    "n_train_samples": 27
+  }
+}

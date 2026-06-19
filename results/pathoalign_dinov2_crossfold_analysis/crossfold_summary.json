@@ -1,0 +1,46 @@
+{
+  "method_descriptive_means": [
+    {
+      "effective_rank": 79.7788276654561,
+      "feature_variance_nonzero_fraction": 1.0,
+      "n_test_regions": 161.0,
+      "n_test_samples": 8.8,
+      "pair_cosine_average": 0.6960221099853515,
+      "pair_cosine_worst": 0.6272995066642761,
+      "retrieval_top1_average": 0.93063667354357,
+      "retrieval_top1_worst": 0.8812419534320622,
+      "scanner_probe_accuracy": 0.7528676916281272,
+      "variant": "paired_reference"
+    },
+    {
+      "effective_rank": 74.04438520354552,
+      "feature_variance_nonzero_fraction": 1.0,
+      "n_test_regions": 161.0,
+      "n_test_samples": 8.8,
+      "pair_cosine_average": 0.7299609289169311,
+      "pair_cosine_worst": 0.6567361879348755,
+      "retrieval_top1_average": 0.9333924017603691,
+      "retrieval_top1_worst": 0.8844308029135616,
+      "scanner_probe_accuracy": 0.36140764156190647,
+      "variant": "pathoalign_dep20"
+    }
+  ],
+  "n_seeds_per_sample": 5,
+  "n_unique_test_samples": 44,
+  "pathoalign_factor_means": {
+    "acquisition_effective_rank": 13.756290388939847,
+    "acquisition_scanner_probe": 0.8650975761685382,
+    "acquisition_tissue_retrieval": 0.18062726291487632,
+    "cross_covariance_rms": 0.08983064264059067
+  },
+  "success_criteria": {
+    "all_biological_dimensions_nonzero": true,
+    "all_conditions_met": true,
+    "mean_pair_cosine_ci_above_zero": true,
+    "mean_retrieval_noninferior_margin_0_02": true,
+    "scanner_probe_ci_below_zero": true,
+    "scanner_probe_reduction_at_least_0_15": true,
+    "worst_pair_cosine_ci_above_zero": true,
+    "worst_retrieval_noninferior_margin_0_02": true
+  }
+}

@@ -1,0 +1,59 @@
+﻿# Raw data and generated image/model artifacts
+*.tif
+*.tiff
+*.svs
+*.ndpi
+*.mrxs
+*.jpg
+*.jpeg
+*.png
+*.npz
+*.pt
+*.pth
+*.ckpt
+
+# Regenerable local outputs
+data/external_multiscanner_caninescc/patches/
+results/**/runs/
+results/**/fold_*/
+
+# Python / OS
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+Thumbs.db
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz

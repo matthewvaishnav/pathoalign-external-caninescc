@@ -1,0 +1,81 @@
+{
+  "effective_rank": 51.59851481428005,
+  "eval_split": "val",
+  "extraction_metadata": {
+    "amp": true,
+    "batch_size": 32,
+    "data_root": "C:\\Users\\matth\\computational-pathology-research\\data\\external_multiscanner_caninescc\\patches",
+    "device": "cuda",
+    "feature_dim": 768,
+    "manifest": "C:\\Users\\matth\\computational-pathology-research\\data\\external_multiscanner_caninescc\\patch_manifests\\splits\\fold_0_patch_manifest.csv",
+    "model": "dinov2_base",
+    "model_revision": "f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+    "model_source": "facebook/dinov2-base",
+    "n_images": 4025,
+    "torch_version": "2.5.1+cu121"
+  },
+  "feature_archive": "C:\\Users\\matth\\computational-pathology-research\\results\\external_multiscanner_caninescc\\features\\fold_0_dinov2_base.npz",
+  "feature_variance_mean": 0.9384941458702087,
+  "feature_variance_nonzero_fraction": 1.0,
+  "n_eval_regions": 189,
+  "n_eval_rows": 945,
+  "n_eval_samples": 9,
+  "pair_cosine_average": 0.9084762275218964,
+  "pair_cosine_worst": 0.8623411655426025,
+  "probe_train_split": "train",
+  "reference_scanner": "cs2",
+  "retrieval_mrr_average": 0.8934602574823287,
+  "retrieval_top1_average": 0.8523809523809524,
+  "retrieval_top1_worst": 0.7275132275132274,
+  "scanner_probe": {
+    "accuracy": 0.8412698412698413,
+    "balanced_accuracy": 0.8412698412698413,
+    "chance_accuracy": 0.2,
+    "confusion_matrix": [
+      [
+        163,
+        11,
+        2,
+        10,
+        3
+      ],
+      [
+        13,
+        165,
+        5,
+        5,
+        1
+      ],
+      [
+        21,
+        8,
+        136,
+        11,
+        13
+      ],
+      [
+        13,
+        7,
+        5,
+        160,
+        4
+      ],
+      [
+        1,
+        10,
+        6,
+        1,
+        171
+      ]
+    ],
+    "labels": [
+      "cs2",
+      "gt450",
+      "nz20",
+      "nz210",
+      "p1000"
+    ],
+    "n_eval_samples": 9,
+    "n_train_samples": 27
+  }
+}

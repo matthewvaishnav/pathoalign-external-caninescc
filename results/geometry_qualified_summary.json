@@ -1,0 +1,59 @@
+{
+  "status": "canine_geometry_qualified_manifest_complete",
+  "source_rows": 6215,
+  "source_regions": 1243,
+  "qualified_rows": 4025,
+  "qualified_regions": 805,
+  "qualified_region_fraction": 0.6476267095736122,
+  "qualified_samples": 44,
+  "max_padding_fraction": 0.1,
+  "folds": [
+    {
+      "fold": 0,
+      "regions": 144,
+      "samples": 8
+    },
+    {
+      "fold": 1,
+      "regions": 189,
+      "samples": 9
+    },
+    {
+      "fold": 2,
+      "regions": 145,
+      "samples": 9
+    },
+    {
+      "fold": 3,
+      "regions": 156,
+      "samples": 9
+    },
+    {
+      "fold": 4,
+      "regions": 171,
+      "samples": 9
+    }
+  ],
+  "p1000_normalization_angle_median": 90.11705189833596,
+  "p1000_normalization_angle_q05": 89.86206146648192,
+  "p1000_normalization_angle_q95": 90.33674425982124,
+  "preview_regions": [
+    "scc_29__region_0021",
+    "scc_43__region_0041",
+    "scc_43__region_0085",
+    "scc_25__region_0003",
+    "scc_20__region_0015",
+    "scc_28__region_0013",
+    "scc_03__region_0051",
+    "scc_02__region_0004",
+    "scc_07__region_0036",
+    "scc_19__region_0003",
+    "scc_29__region_0034",
+    "scc_33__region_0004",
+    "scc_43__region_0094",
+    "scc_29__region_0037",
+    "scc_17__region_0034"
+  ],
+  "montage": "C:\\Users\\matth\\computational-pathology-research\\results\\external_multiscanner_caninescc\\geometry_qualified\\orientation_normalized_montage.jpg",
+  "next_gate": "Visually verify that P1000 now matches the canonical tissue orientation and that all five columns show the same biological region."
+}

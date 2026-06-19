@@ -1,0 +1,3 @@
+variant,pair_cosine_average,pair_cosine_worst,retrieval_top1_average,retrieval_top1_worst,scanner_probe_accuracy,effective_rank,feature_variance_nonzero_fraction,n_test_samples,n_test_regions
+paired_reference,0.6960221099853515,0.6272995066642761,0.93063667354357,0.8812419534320622,0.7528676916281272,79.7788276654561,1.0,8.8,161.0
+pathoalign_dep20,0.7299609289169311,0.6567361879348755,0.9333924017603691,0.8844308029135616,0.36140764156190647,74.04438520354552,1.0,8.8,161.0

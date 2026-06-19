@@ -1,0 +1,9 @@
+﻿numpy
+pandas
+pillow
+torch
+torchvision
+tifffile
+zarr
+scikit-learn
+transformers

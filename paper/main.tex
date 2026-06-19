@@ -1,4 +1,4 @@
-﻿\documentclass[10pt]{article}
+\documentclass[10pt]{article}
 
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{times}
@@ -46,9 +46,16 @@ Kitchener-Waterloo, Canada\\
 \begin{@twocolumnfalse}
 \maketitle
 
-\begin{abstract}
-Scanner-specific acquisition effects can confound representation learning in computational pathology, especially when models are evaluated across sites, devices, or staining/scanning pipelines. PathoAlign is a paired-acquisition projection objective designed to preserve biological region identity while reducing scanner-identifiable signal in the biological embedding. I evaluate whether a PathoAlign configuration selected on a human paired-scanner benchmark transfers to an independent public multi-scanner canine cutaneous squamous cell carcinoma dataset. After auditing annotation correspondence and applying deterministic geometry qualification, I retained 805 complete five-scanner regions from 44 biological samples. Using frozen DINOv2-Base features and locked hyperparameters, PathoAlign reduced sample-blocked scanner-probe accuracy by 0.380 absolute while improving cross-scanner pair cosine and preserving same-region retrieval. These results support PathoAlign as a paired-acquisition representation method that transfers beyond the development benchmark, while remaining a research-only validation rather than a clinical or diagnostic claim.
-\end{abstract}
+\begin{center}
+{\bfseries Abstract}
+\end{center}
+{\small
+\RaggedRight
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.15em}
+\noindent Scanner-specific acquisition effects can confound representation learning in computational pathology, especially when models are evaluated across sites, devices, or staining/scanning pipelines. PathoAlign is a paired-acquisition projection objective designed to preserve biological region identity while reducing scanner-identifiable signal in the biological embedding. I evaluate whether a PathoAlign configuration selected on a human paired-scanner benchmark transfers to an independent public multi-scanner canine cutaneous squamous cell carcinoma dataset. After auditing annotation correspondence and applying deterministic geometry qualification, I retained 805 complete five-scanner regions from 44 biological samples. Using frozen DINOv2-Base features and locked hyperparameters, PathoAlign reduced sample-blocked scanner-probe accuracy by 0.380 absolute while improving cross-scanner pair cosine and preserving same-region retrieval. These results support PathoAlign as a paired-acquisition representation method that transfers beyond the development benchmark, while remaining a research-only validation rather than a clinical or diagnostic claim.
+\par
+}
 
 \vspace{0.15in}
 \end{@twocolumnfalse}
@@ -74,6 +81,8 @@ Before modeling, I audited the COCO annotations, SlideRunner SQLite database, TI
 I evaluated frozen ResNet50 ImageNet, DINOv2-Base, and Phikon representations on the fold-0 validation split before running PathoAlign. DINOv2-Base was selected as the external substrate because it had the strongest cross-scanner cosine consistency and best worst-case retrieval while still retaining scanner-identifiable signal above chance.
 
 \begin{center}
+\begin{minipage}{0.98\linewidth}
+\centering
 \captionof{table}{Frozen encoder triage on fold-0 validation.}
 \label{tab:encoder-triage}
 \small
@@ -98,6 +107,7 @@ DINOv2-B & 0.852 & 0.728 & 51.6 \\
 Phikon & 0.776 & 0.640 & 59.1 \\
 \bottomrule
 \end{tabular}
+\end{minipage}
 \end{center}
 
 \section{Locked PathoAlign Protocol}
@@ -111,6 +121,8 @@ The two variants were a paired-consistency reference projection and the locked P
 Across five folds and five seeds, PathoAlign reduced scanner identifiability while preserving same-region retrieval. Descriptive run means are shown in Table~\ref{tab:run-means}. Sample-blocked paired contrasts over 44 biological samples are shown in Table~\ref{tab:sample-contrasts}.
 
 \begin{center}
+\begin{minipage}{0.98\linewidth}
+\centering
 \captionof{table}{Locked five-fold descriptive run means.}
 \label{tab:run-means}
 \footnotesize
@@ -123,9 +135,12 @@ Reference & 0.752868 & 0.696022 & 0.627300 & 0.930637 \\
 PathoAlign & 0.361408 & 0.729961 & 0.656736 & 0.933392 \\
 \bottomrule
 \end{tabular}}
+\end{minipage}
 \end{center}
 
 \begin{center}
+\begin{minipage}{0.98\linewidth}
+\centering
 \captionof{table}{Sample-blocked PathoAlign minus paired-reference contrasts.}
 \label{tab:sample-contrasts}
 \footnotesize
@@ -141,6 +156,7 @@ Avg R@1 & +0.002326 & +0.000005 & +0.004789 & 0.064600 \\
 Worst R@1 & +0.001731 & -0.005823 & +0.009250 & 0.660573 \\
 \bottomrule
 \end{tabular}}
+\end{minipage}
 \end{center}
 
 The main scanner-probe contrast was $-0.380$ absolute with a bootstrap 95\% confidence interval of $[-0.400, -0.361]$ and Monte Carlo sign-flip $p=0.000004$. All 44 sample blocks favored PathoAlign for scanner-probe reduction. Pair-cosine average and worst-pair cosine also improved for all 44 samples. Retrieval top-1 average and worst-pair retrieval remained non-inferior within the predefined 0.02 margin.
@@ -159,12 +175,16 @@ The accompanying repository contains the scripts, split metadata, compact result
 
 The supported claim is narrow: on an independent paired-scanner canine SCC benchmark, a PathoAlign projection with hyperparameters locked from the human SCORPION development benchmark reduced scanner identifiability while preserving same-region retrieval and improving cross-scanner cosine consistency. This is not clinical validation, diagnostic software, or evidence of patient-care utility.
 
+\clearpage
+\onecolumn
+\RaggedRight
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+
 \section{Conclusion}
 
-A PathoAlign configuration locked from prior development transferred to an independent external paired-scanner canine SCC benchmark. On 44 sample-blocked biological units, PathoAlign reduced scanner-probe accuracy by approximately 0.38 absolute, improved cross-scanner cosine consistency, and preserved same-region retrieval. This provides external paired-acquisition evidence for PathoAlign as a research method for scanner-aware representation identifiability in computational pathology.
+A PathoAlign configuration locked from prior development transferred to an independent external paired-scanner canine SCC benchmark. On 44 sample-blocked biological units, PathoAlign reduced scanner-probe accuracy by approximately 0.38 absolute, improved cross-scanner cosine consistency, and preserved same-region retrieval.
+
+This provides external paired-acquisition evidence for PathoAlign as a research method for scanner-aware representation identifiability in computational pathology.
 
 \end{document}
-
-
-
-

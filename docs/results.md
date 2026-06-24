@@ -6,6 +6,12 @@
 
 This note freezes the external paired-acquisition validation of PathoAlign on the public Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma histopathology dataset. The study uses a geometry-qualified paired-scanner subset rather than all released polygons, because the P1000 raster orientation and crop boundary required explicit qualification before feature extraction.
 
+## Positioning boundary
+
+This is a representation-identifiability study. It evaluates whether a locked paired-acquisition neural factorization objective can separate tissue identity from acquisition provenance on an independent paired-scanner benchmark.
+
+The supported claim is not that PathoAlign proves disease biology or clinical utility. The supported claim is that, in this benchmark, PathoAlign reduces linearly recoverable scanner identity in the tissue branch while preserving same-region retrieval and improving cross-scanner cosine consistency.
+
 ## Dataset and preprocessing boundary
 
 - Dataset: Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma histopathology.
@@ -112,6 +118,8 @@ Factorization audit means for PathoAlign:
 | Acquisition effective rank | 13.756 |
 | Cross-covariance RMS | 0.089831 |
 
+Interpretation: scanner signal remained strongly available in the compact acquisition branch, while same-region tissue retrieval was preserved in the scanner-suppressed tissue branch. This supports factor separation rather than simple feature destruction.
+
 ## Predefined success criteria
 
 All criteria passed:
@@ -130,11 +138,11 @@ Supported claim:
 
 > On an independent external paired-scanner canine SCC benchmark, a PathoAlign projection with hyperparameters locked from SCORPION reduced scanner identifiability by approximately 0.38 absolute while preserving same-region retrieval and improving cross-scanner cosine consistency.
 
-Do not overstate this as clinical validation or diagnostic performance. This is a representation-identifiability and paired-acquisition validation study.
+Do not overstate this as clinical validation, diagnostic performance, proof of disease biology, or perfect biological/acquisition disentanglement. This is a representation-identifiability and paired-acquisition validation study.
 
 ## Recommended standalone study package
 
-This result is mature enough to become its own standalone repository and short paper:
+This result is mature enough to remain its own standalone repository and short paper:
 
 - Repository: `pathoalign-external-caninescc`
 - Paper focus: external paired-scanner validation of PathoAlign.

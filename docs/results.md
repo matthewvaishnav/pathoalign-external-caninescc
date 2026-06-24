@@ -1,44 +1,25 @@
-# PathoAlign external validation on multi-scanner canine SCC
+# Paired-Acquisition Neural Factorization external validation on multi-scanner canine SCC
 
 ## Status
 
 **Result:** passed locked external validation.
 
-This note freezes the external paired-acquisition validation of PathoAlign on the public Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma histopathology dataset. The study uses a geometry-qualified paired-scanner subset rather than all released polygons, because the P1000 raster orientation and crop boundary required explicit qualification before feature extraction.
+This note freezes the external paired-acquisition validation of Paired-Acquisition Neural Factorization on the public Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma histopathology dataset.
 
 ## Positioning boundary
 
 This is a representation-identifiability study. It evaluates whether a locked paired-acquisition neural factorization objective can separate tissue identity from acquisition provenance on an independent paired-scanner benchmark.
 
-The supported claim is not that PathoAlign proves disease biology or clinical utility. The supported claim is that, in this benchmark, PathoAlign reduces linearly recoverable scanner identity in the tissue branch while preserving same-region retrieval and improving cross-scanner cosine consistency.
+The supported claim is not that the method proves disease biology. The supported claim is that, in this benchmark, the method reduces linearly recoverable scanner identity in the tissue factor while preserving same-region retrieval and improving cross-scanner cosine consistency.
 
 ## Dataset and preprocessing boundary
 
-- Dataset: Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma histopathology.
 - Biological samples: 44.
 - Scanners: `cs2`, `gt450`, `nz20`, `nz210`, `p1000`.
-- Released views inspected: 220 TIFF images, 6,215 annotation views, 1,243 candidate matched regions.
 - Geometry-qualified subset: 805 complete five-view regions, 4,025 image views.
-- Qualification rule: retain a region only when every scanner view requires at most 10% adaptive-crop padding.
-- P1000 handling: sample-specific inverse orientation normalization derived from affine correspondence with CS2.
 - Raw TIFFs, extracted JPEG patches, frozen feature archives, and checkpoints are intentionally excluded from git.
 
-## Geometry and registration audit
-
-The public annotations and SlideRunner database were audited before modeling:
-
-- TIFF orientation tags were not sufficient to explain the P1000 discrepancy.
-- Raw TIFF dimensions matched COCO dimensions.
-- SQLite polygon bounds matched COCO geometry within less than one pixel.
-- No hidden registration, transform, crop, offset, or matrix fields were found in the SQLite schema.
-- P1000 annotation centers followed a coherent sample-specific affine map relative to CS2.
-- P1000 median affine rotation was approximately -90 degrees with subpixel-to-low-pixel residuals.
-
-This supports treating the dataset as a valid paired-acquisition benchmark after deterministic orientation normalization and geometry qualification.
-
 ## Frozen encoder triage on fold-0 validation
-
-All encoders used the same 805-region geometry-qualified patch set and the same fold-0 sample-blocked split.
 
 | Encoder | Pair cosine avg | Pair cosine worst | Retrieval top-1 avg | Retrieval top-1 worst | Scanner probe accuracy | Effective rank |
 |---|---:|---:|---:|---:|---:|---:|
@@ -48,34 +29,6 @@ All encoders used the same 805-region geometry-qualified patch set and the same 
 
 **Frozen substrate selected:** DINOv2-Base.
 
-Rationale: DINOv2 had the strongest cross-scanner cosine consistency and best worst-case retrieval while still retaining scanner signal far above chance.
-
-## Fold-0 external PathoAlign validation
-
-Setup:
-
-- Frozen DINOv2-Base features.
-- Fold 0 only.
-- Train split used for fitting.
-- Validation split used for evaluation.
-- Test rows were not projected.
-- Seeds: 901--905.
-- Variants: `paired_reference` and `pathoalign_dep20`.
-- Schedule: 75 epochs, region batch size 32, learning rate 3e-4, weight decay 1e-4.
-- Hyperparameters: locked from SCORPION development.
-
-Seed-matched validation means:
-
-| Metric | Paired reference | PathoAlign dep20 | PathoAlign minus paired |
-|---|---:|---:|---:|
-| Scanner probe accuracy | 0.747937 | 0.365714 | -0.382222 |
-| Pair cosine average | 0.693994 | 0.722137 | +0.028142 |
-| Pair cosine worst | 0.603945 | 0.627117 | +0.023172 |
-| Retrieval top-1 average | 0.939947 | 0.941587 | +0.001640 |
-| Retrieval top-1 worst | 0.881481 | 0.878836 | -0.002646 |
-
-Interpretation: PathoAlign reduced scanner identifiability by roughly 0.38 absolute while preserving same-region retrieval and improving cross-scanner cosine.
-
 ## Locked five-fold external test
 
 Setup:
@@ -84,13 +37,13 @@ Setup:
 - Five sample-blocked folds.
 - Each fold uses all non-test samples for fitting and evaluates the held-out fold exactly once.
 - Seeds: 911--915.
-- Variants: `paired_reference` and `pathoalign_dep20`.
+- Variants: `paired_reference` and `factorized_dep20`.
 - Total fits: 50.
 - Hyperparameters remained locked.
 
 Descriptive run means:
 
-| Metric | Paired reference | PathoAlign dep20 | PathoAlign minus paired |
+| Metric | Paired reference | Factorized dep20 | Factorized minus paired |
 |---|---:|---:|---:|
 | Scanner probe accuracy | 0.752868 | 0.361408 | -0.391460 |
 | Pair cosine average | 0.696022 | 0.729961 | +0.033939 |
@@ -109,7 +62,7 @@ Sample-blocked contrasts over 44 biological samples:
 | Retrieval top-1 average | +0.002326 | [+0.000005, +0.004789] | 24/44 | 0.064600 |
 | Retrieval top-1 worst | +0.001731 | [-0.005823, +0.009250] | 17/44 | 0.660573 |
 
-Factorization audit means for PathoAlign:
+Factorization audit means:
 
 | Metric | Mean |
 |---|---:|
@@ -118,32 +71,12 @@ Factorization audit means for PathoAlign:
 | Acquisition effective rank | 13.756 |
 | Cross-covariance RMS | 0.089831 |
 
-Interpretation: scanner signal remained strongly available in the compact acquisition branch, while same-region tissue retrieval was preserved in the scanner-suppressed tissue branch. This supports factor separation rather than simple feature destruction.
-
-## Predefined success criteria
-
-All criteria passed:
-
-- Scanner probe reduction at least 0.15.
-- Scanner-probe confidence interval below zero.
-- Mean retrieval noninferiority within 0.02.
-- Worst-pair retrieval noninferiority within 0.02.
-- Mean pair-cosine confidence interval above zero.
-- Worst pair-cosine confidence interval above zero.
-- All biological dimensions nonzero.
+Interpretation: scanner signal remained strongly available in the compact acquisition factor, while same-region tissue retrieval was preserved in the scanner-suppressed tissue factor.
 
 ## Claim boundary
 
 Supported claim:
 
-> On an independent external paired-scanner canine SCC benchmark, a PathoAlign projection with hyperparameters locked from SCORPION reduced scanner identifiability by approximately 0.38 absolute while preserving same-region retrieval and improving cross-scanner cosine consistency.
+> On an independent external paired-scanner canine SCC benchmark, a paired-acquisition neural factorization projection with hyperparameters locked from SCORPION reduced scanner identifiability by approximately 0.38 absolute while preserving same-region retrieval and improving cross-scanner cosine consistency.
 
-Do not overstate this as clinical validation, diagnostic performance, proof of disease biology, or perfect biological/acquisition disentanglement. This is a representation-identifiability and paired-acquisition validation study.
-
-## Recommended standalone study package
-
-This result is mature enough to remain its own standalone repository and short paper:
-
-- Repository: `pathoalign-external-caninescc`
-- Paper focus: external paired-scanner validation of PathoAlign.
-- Main repository role: research-program hub that links to the standalone PDF, code, and results.
+Do not overstate this as proof of disease biology or perfect biological/acquisition factor separation. This is a representation-identifiability and paired-acquisition validation study.

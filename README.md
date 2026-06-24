@@ -1,21 +1,20 @@
-# PathoAlign External Canine SCC Validation
+# Paired-Acquisition Neural Factorization External Canine SCC Validation
 
 Standalone reproducibility package for the external paired-scanner validation of
-PathoAlign on the Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma
-histopathology dataset.
+**Paired-Acquisition Neural Factorization** on the Multi-Scanner Canine Cutaneous
+Squamous Cell Carcinoma histopathology dataset.
 
 ## Positioning
 
-I use this repository to test PathoAlign as a representation-identifiability method, not as clinical software. The study asks whether a locked paired-acquisition neural factorization objective can transfer from SCORPION to an independent five-scanner benchmark and still separate tissue identity from acquisition provenance.
+I use this repository to test Paired-Acquisition Neural Factorization as a representation-identifiability method. The study asks whether a locked paired-acquisition neural factorization objective can transfer from SCORPION to an independent five-scanner benchmark and still separate tissue identity from acquisition provenance.
 
-The claim is deliberately narrow: PathoAlign reduces scanner identifiability in the scanner-suppressed tissue branch while preserving same-region retrieval and cross-scanner tissue agreement. I do not claim that this proves disease biology, clinical validity, diagnostic equivalence, or complete disentanglement.
+The claim is deliberately narrow: the method reduces scanner identifiability in the scanner-suppressed tissue factor while preserving same-region retrieval and cross-scanner tissue agreement. I do not claim that this proves disease biology, clinical validity, diagnostic equivalence, or complete factor separation.
 
 ## Headline result
 
-PathoAlign reduced scanner identifiability on a locked five-fold external test
-while preserving same-region retrieval.
+Paired-Acquisition Neural Factorization reduced scanner identifiability on a locked five-fold external test while preserving same-region retrieval.
 
-| Metric | Paired reference | PathoAlign dep20 | Difference |
+| Metric | Paired reference | Factorized dep20 | Difference |
 |---|---:|---:|---:|
 | Scanner probe accuracy | 0.752868 | 0.361408 | -0.380347 sample-blocked contrast |
 | Pair cosine average | 0.696022 | 0.729961 | +0.033256 sample-blocked contrast |
@@ -27,14 +26,14 @@ All predefined success criteria passed over 44 biological sample blocks.
 
 ## Factorization audit
 
-| Audit metric | PathoAlign mean |
+| Audit metric | Mean |
 |---|---:|
 | Acquisition scanner probe | 0.865098 |
 | Acquisition tissue retrieval | 0.180627 |
 | Acquisition effective rank | 13.756 |
 | Cross-covariance RMS | 0.089831 |
 
-Interpretation: scanner identity remained strongly available in the acquisition-specific branch while same-region tissue retrieval was concentrated in the scanner-suppressed tissue branch. This supports a factor-separation interpretation rather than simple representational destruction.
+Interpretation: scanner identity remained strongly available in the acquisition-specific factor while same-region tissue retrieval was concentrated in the scanner-suppressed tissue factor. This supports a factor-separation interpretation rather than simple representational destruction.
 
 ## What is included
 
@@ -42,7 +41,7 @@ Interpretation: scanner identity remained strongly available in the acquisition-
 - Geometry qualification and P1000 orientation-normalization scripts.
 - Patch extraction manifest generation.
 - Frozen encoder analysis scripts.
-- Locked PathoAlign validation and five-fold test runners.
+- Locked validation and five-fold test runners.
 - Compact result tables and JSON summaries.
 
 ## What is not included

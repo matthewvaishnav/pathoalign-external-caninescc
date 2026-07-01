@@ -1,8 +1,13 @@
-﻿cff-version: 1.2.0
-title: Paired-Acquisition Neural Factorization External Canine SCC Validation
-message: If you use this reproducibility package, please cite the repository and the public Multi-Scanner Canine SCC dataset.
+cff-version: 1.2.0
+title: External Paired-Acquisition Validation on Multi-Scanner Canine Cutaneous Squamous Cell Carcinoma
+message: If you use this research artifact, please cite the repository and the public Multi-Scanner Canine SCC dataset.
 authors:
-  - family-names: Chorne
-    given-names: Larry
+  - family-names: Vaishnav
+    given-names: Matthew
 repository-code: https://github.com/matthewvaishnav/paired-acquisition-factorization-caninescc
 license: MIT
+version: 0.1.0
+abstract: >-
+  Standalone research artifact for external paired-acquisition validation of
+  Paired-Acquisition Neural Factorization on a public multi-scanner canine
+  cutaneous squamous cell carcinoma histopathology benchmark.
